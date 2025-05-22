@@ -12,8 +12,8 @@ COPY . .
 # Build the application
 RUN cargo build --release
 
-# Runtime stage
-FROM debian:bullseye-slim AS final
+# Runtime stage - use the same Debian version as the builder
+FROM debian:bookworm-slim AS final
 
 # Install runtime dependencies
 RUN apt-get update && apt-get install -y \
